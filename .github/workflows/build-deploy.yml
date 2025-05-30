@@ -65,7 +65,7 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Drevision=1.${{ github.run_number }}.0
     
       - name: ServiceNow DevOps Unit Test Results
-        uses: ServiceNow/servicenow-devops-test-report@v5.1.0
+        uses: ServiceNow/servicenow-devops-test-report@v6.0.0
         with:
           instance-url: ${{ secrets.SN_URL }}
           devops-integration-token: ${{ secrets.SN_TOKEN }}
@@ -101,7 +101,7 @@ jobs:
           package-name: 'demo-k25-gha-package - ${{ github.run_number }}'
           
       - name: ServiceNow DevOps Change Automation
-        uses: ServiceNow/servicenow-devops-change@v5.1.0
+        uses: ServiceNow/servicenow-devops-change@v6.0.0
         with:
           instance-url: ${{ secrets.SN_URL }}
           devops-integration-token: ${{ secrets.SN_TOKEN }}
