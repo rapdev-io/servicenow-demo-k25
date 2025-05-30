@@ -73,6 +73,7 @@ jobs:
           context-github: ${{ toJSON(github) }}
           job-name: ${{ github.job }}
           xml-report-filename: target/surefire-reports/TEST-com.rapdev.maths.MathsTest.xml
+          test-summary-name: RapDev Tests
       
       - name: ServiceNow DevOps Sonar
         uses: ServiceNow/servicenow-devops-sonar@v5.1.0
