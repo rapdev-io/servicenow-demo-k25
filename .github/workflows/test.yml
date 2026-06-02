@@ -1,0 +1,13 @@
+name: New Pipeline Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Compile
+      run: echo Build
