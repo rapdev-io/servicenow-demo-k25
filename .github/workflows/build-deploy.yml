@@ -26,8 +26,14 @@ jobs:
     steps:
       - run: sleep 120
 
-  package-registration:
+  echo-job:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job
+
+  package-registration:
+    needs: echo-job
     runs-on: ubuntu-latest
     steps:
       - name: SN Register Package
@@ -63,6 +69,7 @@ jobs:
     needs: skip-job
     environment: Production
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - uses: actions/checkout@v4.2.2
       - name: Run a one-line script
