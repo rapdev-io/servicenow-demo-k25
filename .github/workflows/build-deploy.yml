@@ -32,8 +32,15 @@ jobs:
     steps:
       - run: echo job
 
-  package-registration:
+  skip-job:
     needs: echo-job
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - run: echo skip
+
+  package-registration:
+    needs: skip-job
     runs-on: ubuntu-latest
     steps:
       - name: SN Register Package
@@ -57,16 +64,9 @@ jobs:
           context-github: ${{ toJSON(github) }}
           change-request: '{}'
           deployment-gate: '{"environment":"Production","jobName":"deploy"}'
-
-  skip-job:
-    needs: package-registration
-    runs-on: ubuntu-latest
-    if: failure()
-    steps:
-      - run: echo skip
     
   deploy:
-    needs: skip-job
+    needs: package-registration
     environment: Production
     runs-on: ubuntu-latest
     if: always()
