@@ -112,6 +112,8 @@ jobs:
           change-request: '{}'
           deployment-gate: '{"environment":"Production","jobName":"deploy"}'
 
+      - run: sleep 60
+
   deploy:
     needs: package-registration
     environment: Production
