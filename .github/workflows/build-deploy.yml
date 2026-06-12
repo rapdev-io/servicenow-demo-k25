@@ -42,6 +42,7 @@ jobs:
   package-registration:
     needs: skip-job
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - name: SN Register Package
         uses: ServiceNow/servicenow-devops-register-package@v5.1.0
