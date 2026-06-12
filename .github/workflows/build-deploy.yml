@@ -60,7 +60,7 @@ jobs:
       - run: echo skip
     
   deploy:
-    needs: package-registration
+    needs: skip-job
     environment: Production
     runs-on: ubuntu-latest
     steps:
